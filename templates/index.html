@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        header .header-left h1 {
+            margin-right: 20px;
+        }
+
+        header .header-right a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        header .header-right a:hover {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .featured-image {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 10px;
+            width: 300px;
+            float: left;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+        }
+
+        .product-card .price {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .add-to-cart-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-product-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #dc3545;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .delete-product-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <div class="header-left">
+            <h1>Apple Store</h1>
+        </div>
+        <div class="header-right">
+            {% if logged_in %}
+                <a href="{{ url_for('product') }}">Add Product</a>
+                <a href="{{ url_for('delete_products') }}">Delete Product</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('register') }}">Register</a>
+                <a href="{{ url_for('login1') }}">Login</a>
+            {% endif %}
+            <a href="{{ url_for('cart') }}">Cart</a>
+        </div>
+    </header>
+
+    <!-- Featured image -->
+    <div class="featured-image">
+        <img src="{{ url_for('static', filename='banner.jpg') }}" alt="Featured Image">
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Product cards -->
+        {% for product in products %}
+        <div class="product-card">
+            {% if product.photo %}
+                <img src="data:image/jpeg;base64,{{ product.photo }}" alt="Product Image">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p class="price">$ {{ product.price }}</p>
+            {% if logged_in %}
+                
+            {% endif %}
+            <!-- Add to Cart form -->
+            <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="post">
+                <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

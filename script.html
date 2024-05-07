@@ -1,0 +1,37 @@
+<!-- 
+    <script>
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            var formData = new FormData(this);
+
+            // Convert form data to JSON (excluding file)
+            var jsonData = {};
+            for (const [key, value] of formData.entries()) {
+                if (key !== 'photo') {
+                    jsonData[key] = value;
+                }
+            }
+
+            // Send PUT request to server
+            fetch('/products', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to add product');
+                }
+                alert('Product added successfully');
+                location.reload(); // Reload page after successful addition
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to add product');
+            });
+        });
+    </script> -->
