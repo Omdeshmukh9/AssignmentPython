@@ -1,16 +1,19 @@
-# Flask Project
+# python Ecommerce website
 
-This repository contains a Flask project ecoomerce website.
+App made as Assignment for Intenship 
 
-## Installation
+## How to intsall 
+ To run a Flutter project from a GitHub link, you can follow these steps:
 
-You can clone this repository using the following command:
-```bash
-git clone https://github.com/Omdeshmukh9/AssignmentPython.git
+#1.Clone the repository:
+"https://github.com/Omdeshmukh9/AssignmentPython"
 
+#2.Navigate to the project directory: Use the cd command to navigate into the project directory.
+   
+"cd flask "
 
-## Install Required packages using following command
-pip insrall -r requirements.txt 
+#3.intsall required packages using.
+"pip install -r reuirements.txt"  
 
-## Run the App using following cmd
-python app.py
+#4.Use following cmd to run the app 
+"python app.py"
