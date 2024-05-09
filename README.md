@@ -13,7 +13,7 @@ App made as Assignment for Intenship
 "cd flask "
 
 #3.intsall required packages using.
-"pip install -r reuirements.txt"  
+"pip install -r requirements.txt"  
 
 #4.Use following cmd to run the app 
 "python app.py"
